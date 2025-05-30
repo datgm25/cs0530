@@ -8,6 +8,7 @@ namespace cs0530
         public Form1()
         {
             InitializeComponent();
+            MessageBox.Show($"{label1.Right} {label1.Bottom}");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -19,7 +20,16 @@ namespace cs0530
             {
                 vx = -vx;
             }
+            else if (label1.Right > ClientSize.Width)
+            {
+                vx = -vx;
+            }
+
             if (label1.Top < 0)
+            {
+                vy = -vy;
+            }
+            else if (label1.Bottom > ClientSize.Height)
             {
                 vy = -vy;
             }
