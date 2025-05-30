@@ -2,13 +2,13 @@ namespace cs0530
 {
     public partial class Form1 : Form
     {
-        int vx = -10;
+        int vx = -20;
         int vy = -10;
 
         public Form1()
         {
             InitializeComponent();
-            MessageBox.Show($"{label1.Right} {label1.Bottom}");
+            //MessageBox.Show($"{label1.Right} {label1.Bottom}");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -18,20 +18,20 @@ namespace cs0530
 
             if (label1.Left < 0)
             {
-                vx = -vx;
+                vx = Math.Abs(vx);
             }
             else if (label1.Right > ClientSize.Width)
             {
-                vx = -vx;
+                vx = -Math.Abs(vx);
             }
 
             if (label1.Top < 0)
             {
-                vy = -vy;
+                vy = Math.Abs(vy);
             }
             else if (label1.Bottom > ClientSize.Height)
             {
-                vy = -vy;
+                vy = -Math.Abs(vy);
             }
         }
     }
