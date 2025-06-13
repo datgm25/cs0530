@@ -2,12 +2,8 @@ namespace cs0530
 {
     public partial class Form1 : Form
     {
-        int vx = -10;
-        int vy = -10;
-        int vx2 = -10;
-        int vy2 = -10;
-        int vx3 = -10;
-        int vy3 = -10;
+        int []vx = new int[3];
+        int []vy = new int[3];
 
         int counter = 0;
         static Random random = new Random();
@@ -16,12 +12,12 @@ namespace cs0530
         {
             InitializeComponent();
             //MessageBox.Show($"{label1.Right} {label1.Bottom}");
-            vx = random.Next(-10, 11);
-            vy = random.Next(-10, 11);
-            vx2 = random.Next(-10, 11);
-            vy2 = random.Next(-10, 11);
-            vx3 = random.Next(-10, 11);
-            vy3 = random.Next(-10, 11);
+            vx[0] = random.Next(-10, 11);
+            vy[0] = random.Next(-10, 11);
+            vx[1] = random.Next(-10, 11);
+            vy[1] = random.Next(-10, 11);
+            vx[2] = random.Next(-10, 11);
+            vy[2] = random.Next(-10, 11);
 
             label1.Left = random.Next(ClientSize.Width - label1.Width);
             label1.Top = random.Next(ClientSize.Height - label1.Height);
@@ -43,67 +39,67 @@ namespace cs0530
             label2.Left = fpos.X - label2.Width / 2;
             label2.Top = fpos.Y - label2.Height / 2;
 
-            label1.Left += vx;
-            label1.Top += vy;
+            label1.Left += vx[0];
+            label1.Top += vy[0];
 
-            label4.Left += vx2;
-            label4.Top += vy2;
+            label4.Left += vx[1];
+            label4.Top += vy[1];
 
-            label5.Left += vx3;
-            label5.Top += vy3;
+            label5.Left += vx[2];
+            label5.Top += vy[2];
 
             if (label1.Left < 0)
             {
-                vx = Math.Abs(vx);
+                vx[0] = Math.Abs(vx[0]);
             }
             else if (label1.Right > ClientSize.Width)
             {
-                vx = -Math.Abs(vx);
+                vx[0] = -Math.Abs(vx[0]);
             }
 
             if (label1.Top < 0)
             {
-                vy = Math.Abs(vy);
+                vy[0] = Math.Abs(vy[0]);
             }
             else if (label1.Bottom > ClientSize.Height)
             {
-                vy = -Math.Abs(vy);
+                vy[0] = -Math.Abs(vy[0]);
             }
 
             if (label4.Left < 0)
             {
-                vx2 = Math.Abs(vx2);
+                vx[1] = Math.Abs(vx[1]);
             }
             else if (label4.Right > ClientSize.Width)
             {
-                vx2 = -Math.Abs(vx2);
+                vx[1] = -Math.Abs(vx[1]);
             }
 
             if (label4.Top < 0)
             {
-                vy2 = Math.Abs(vy2);
+                vy[1] = Math.Abs(vy[1]);
             }
             else if (label4.Bottom > ClientSize.Height)
             {
-                vy2 = -Math.Abs(vy2);
+                vy[1] = -Math.Abs(vy[1]);
             }
 
             if (label5.Left < 0)
             {
-                vx3 = Math.Abs(vx3);
+                vx[2] = Math.Abs(vx[2]);
             }
             else if (label5.Right > ClientSize.Width)
             {
-                vx3 = -Math.Abs(vx3);
+                vx[2] = -Math.Abs(vx[2]);
             }
 
             if (label5.Top < 0)
             {
-                vy3 = Math.Abs(vy3);
+                vy[2] = Math.Abs(vy[2]);
             }
             else if (label5.Bottom > ClientSize.Height)
             {
-                vy3 = -Math.Abs(vy3);
+                vy[2] = -Math.Abs(vy[2]);
             }
 
 
@@ -141,13 +137,13 @@ namespace cs0530
             counter = 0;
             button1.Visible=false;
 
-            vx = random.Next(-10, 11);
-            vy = random.Next(-10, 11);
+            vx[0] = random.Next(-10, 11);
+            vy[0] = random.Next(-10, 11);
 
-            vx2 = random.Next(-10, 11);
-            vy2 = random.Next(-10, 11);
-            vx3 = random.Next(-10, 11);
-            vy3 = random.Next(-10, 11);
+            vx[1] = random.Next(-10, 11);
+            vy[1] = random.Next(-10, 11);
+            vx[2] = random.Next(-10, 11);
+            vy[2] = random.Next(-10, 11);
 
             label1.Left = random.Next(ClientSize.Width - label1.Width);
             label1.Top = random.Next(ClientSize.Height - label1.Height);
