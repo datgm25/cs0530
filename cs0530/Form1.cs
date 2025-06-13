@@ -2,14 +2,20 @@ namespace cs0530
 {
     public partial class Form1 : Form
     {
-        int vx = -20;
+        int vx = -10;
         int vy = -10;
         int counter = 0;
+        static Random random = new Random();
 
         public Form1()
         {
             InitializeComponent();
             //MessageBox.Show($"{label1.Right} {label1.Bottom}");
+            vx = random.Next(-10, 11);
+            vy = random.Next(-10, 11);
+
+            label1.Left = random.Next(ClientSize.Width - label1.Width);
+            label1.Top = random.Next(ClientSize.Height - label1.Height);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -61,6 +67,12 @@ namespace cs0530
             timer1.Start();
             counter = 0;
             button1.Visible=false;
+
+            vx = random.Next(-10, 11);
+            vy = random.Next(-10, 11);
+
+            label1.Left = random.Next(ClientSize.Width - label1.Width);
+            label1.Top = random.Next(ClientSize.Height - label1.Height);
         }
     }
 }
