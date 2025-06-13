@@ -4,6 +4,7 @@ namespace cs0530
     {
         int vx = -20;
         int vy = -10;
+        int counter = 0;
 
         public Form1()
         {
@@ -13,6 +14,9 @@ namespace cs0530
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            counter++;
+            label3.Text = $"{counter}";
+
             var mpos = MousePosition;
             var fpos = PointToClient(mpos);
             Text = $"{mpos.X}, {mpos.Y} / {fpos.X}, {fpos.Y}";
@@ -48,8 +52,15 @@ namespace cs0530
                 && (fpos.Y < label1.Bottom))
             {
                 timer1.Stop();
+                button1.Visible = true;
             }
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+            counter = 0;
+            button1.Visible=false;
         }
     }
 }

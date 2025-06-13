@@ -32,6 +32,8 @@
             label1 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
             label2 = new Label();
+            label3 = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -59,11 +61,35 @@
             label2.TabIndex = 1;
             label2.Text = "label2";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI", 24F);
+            label3.Location = new Point(543, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(37, 45);
+            label3.TabIndex = 2;
+            label3.Text = "0";
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Yu Gothic UI", 24F);
+            button1.Location = new Point(336, 225);
+            button1.Name = "button1";
+            button1.Size = new Size(138, 52);
+            button1.TabIndex = 3;
+            button1.Text = "リトライ";
+            button1.UseVisualStyleBackColor = true;
+            button1.Visible = false;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Form1";
@@ -77,5 +103,7 @@
         private Label label1;
         private System.Windows.Forms.Timer timer1;
         private Label label2;
+        private Label label3;
+        private Button button1;
     }
 }
