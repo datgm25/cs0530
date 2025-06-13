@@ -13,6 +13,13 @@ namespace cs0530
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            var mpos = MousePosition;
+            var fpos = PointToClient(mpos);
+            Text = $"{mpos.X}, {mpos.Y} / {fpos.X}, {fpos.Y}";
+
+            label2.Left = fpos.X - label2.Width / 2;
+            label2.Top = fpos.Y - label2.Height / 2;
+
             label1.Left += vx;
             label1.Top += vy;
 
@@ -33,6 +40,16 @@ namespace cs0530
             {
                 vy = -Math.Abs(vy);
             }
+
+            // (label1.Left < fpos.X) && (fpos.X < label1.Right)
+            if ((fpos.X > label1.Left)
+                && (fpos.X < label1.Right)
+                && (fpos.Y > label1.Top)
+                && (fpos.Y < label1.Bottom))
+            {
+                timer1.Stop();
+            }
+
         }
     }
 }
