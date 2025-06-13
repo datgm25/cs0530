@@ -34,6 +34,8 @@
             label2 = new Label();
             label3 = new Label();
             button1 = new Button();
+            label4 = new Label();
+            label5 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -49,6 +51,7 @@
             // timer1
             // 
             timer1.Enabled = true;
+            timer1.Interval = 20;
             timer1.Tick += timer1_Tick;
             // 
             // label2
@@ -83,11 +86,33 @@
             button1.Visible = false;
             button1.Click += button1_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Yu Gothic UI", 24F);
+            label4.Location = new Point(392, 114);
+            label4.Name = "label4";
+            label4.Size = new Size(105, 45);
+            label4.TabIndex = 4;
+            label4.Text = "label4";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Yu Gothic UI", 24F);
+            label5.Location = new Point(520, 353);
+            label5.Name = "label5";
+            label5.Size = new Size(105, 45);
+            label5.TabIndex = 5;
+            label5.Text = "label5";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(835, 524);
+            Controls.Add(label5);
+            Controls.Add(label4);
             Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -105,5 +130,7 @@
         private Label label2;
         private Label label3;
         private Button button1;
+        private Label label4;
+        private Label label5;
     }
 }
