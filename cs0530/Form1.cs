@@ -12,12 +12,11 @@ namespace cs0530
         {
             InitializeComponent();
             //MessageBox.Show($"{label1.Right} {label1.Bottom}");
-            vx[0] = random.Next(-10, 11);
-            vy[0] = random.Next(-10, 11);
-            vx[1] = random.Next(-10, 11);
-            vy[1] = random.Next(-10, 11);
-            vx[2] = random.Next(-10, 11);
-            vy[2] = random.Next(-10, 11);
+            for (int i = 0; i < 3; i++)
+            {
+                vx[i] = random.Next(-10, 11);
+                vy[i] = random.Next(-10, 11);
+            }
 
             label1.Left = random.Next(ClientSize.Width - label1.Width);
             label1.Top = random.Next(ClientSize.Height - label1.Height);
