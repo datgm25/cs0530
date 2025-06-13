@@ -2,8 +2,8 @@ namespace cs0530
 {
     public partial class Form1 : Form
     {
-        int []vx = new int[3];
-        int []vy = new int[3];
+        int[] vx = new int[3];
+        int[] vy = new int[3];
 
         int counter = 0;
         static Random random = new Random();
@@ -135,7 +135,7 @@ namespace cs0530
         {
             timer1.Start();
             counter = 0;
-            button1.Visible=false;
+            button1.Visible = false;
 
             vx[0] = random.Next(-10, 11);
             vy[0] = random.Next(-10, 11);
@@ -151,6 +151,14 @@ namespace cs0530
             label4.Top = random.Next(ClientSize.Height - label4.Height);
             label5.Left = random.Next(ClientSize.Width - label5.Width);
             label5.Top = random.Next(ClientSize.Height - label5.Height);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                MessageBox.Show($"{i}");
+            }
         }
     }
 }
