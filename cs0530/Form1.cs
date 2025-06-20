@@ -2,8 +2,11 @@ namespace cs0530
 {
     public partial class Form1 : Form
     {
-        int[] vx = new int[3];
-        int[] vy = new int[3];
+        static int LabelCount => 10;
+
+        int[] vx = new int[LabelCount];
+        int[] vy = new int[LabelCount];
+        Label[] labels = new Label[LabelCount];
 
         int counter = 0;
         static Random random = new Random();
@@ -11,19 +14,22 @@ namespace cs0530
         public Form1()
         {
             InitializeComponent();
+
             //MessageBox.Show($"{label1.Right} {label1.Bottom}");
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < LabelCount; i++)
             {
                 vx[i] = random.Next(-10, 11);
                 vy[i] = random.Next(-10, 11);
-            }
 
-            label1.Left = random.Next(ClientSize.Width - label1.Width);
-            label1.Top = random.Next(ClientSize.Height - label1.Height);
-            label4.Left = random.Next(ClientSize.Width - label4.Width);
-            label4.Top = random.Next(ClientSize.Height - label4.Height);
-            label5.Left = random.Next(ClientSize.Width - label5.Width);
-            label5.Top = random.Next(ClientSize.Height - label5.Height);
+                labels[i] = new Label();
+                labels[i].AutoSize = true;
+                labels[i].Text = "Ÿ";
+                labels[i].Font = new Font("Yu Gothic UI", 24F);
+                Controls.Add(labels[i]);
+
+                labels[i].Left = random.Next(ClientSize.Width - labels[i].Width);
+                labels[i].Top = random.Next(ClientSize.Height - labels[i].Height);
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -38,96 +44,38 @@ namespace cs0530
             label2.Left = fpos.X - label2.Width / 2;
             label2.Top = fpos.Y - label2.Height / 2;
 
-            label1.Left += vx[0];
-            label1.Top += vy[0];
+            for (int i = 0; i < LabelCount; i++)
+            {
+                labels[i].Left += vx[i];
+                labels[i].Top += vy[i];
 
-            label4.Left += vx[1];
-            label4.Top += vy[1];
+                if (labels[i].Left < 0)
+                {
+                    vx[i] = Math.Abs(vx[i]);
+                }
+                else if (labels[i].Right > ClientSize.Width)
+                {
+                    vx[i] = -Math.Abs(vx[i]);
+                }
 
-            label5.Left += vx[2];
-            label5.Top += vy[2];
+                if (labels[i].Top < 0)
+                {
+                    vy[i] = Math.Abs(vy[i]);
+                }
+                else if (labels[i].Bottom > ClientSize.Height)
+                {
+                    vy[i] = -Math.Abs(vy[i]);
+                }
 
-            if (label1.Left < 0)
-            {
-                vx[0] = Math.Abs(vx[0]);
+                if ((fpos.X > labels[i].Left)
+                    && (fpos.X < labels[i].Right)
+                    && (fpos.Y > labels[i].Top)
+                    && (fpos.Y < labels[i].Bottom))
+                {
+                    timer1.Stop();
+                    button1.Visible = true;
+                }
             }
-            else if (label1.Right > ClientSize.Width)
-            {
-                vx[0] = -Math.Abs(vx[0]);
-            }
-
-            if (label1.Top < 0)
-            {
-                vy[0] = Math.Abs(vy[0]);
-            }
-            else if (label1.Bottom > ClientSize.Height)
-            {
-                vy[0] = -Math.Abs(vy[0]);
-            }
-
-            if (label4.Left < 0)
-            {
-                vx[1] = Math.Abs(vx[1]);
-            }
-            else if (label4.Right > ClientSize.Width)
-            {
-                vx[1] = -Math.Abs(vx[1]);
-            }
-
-            if (label4.Top < 0)
-            {
-                vy[1] = Math.Abs(vy[1]);
-            }
-            else if (label4.Bottom > ClientSize.Height)
-            {
-                vy[1] = -Math.Abs(vy[1]);
-            }
-
-            if (label5.Left < 0)
-            {
-                vx[2] = Math.Abs(vx[2]);
-            }
-            else if (label5.Right > ClientSize.Width)
-            {
-                vx[2] = -Math.Abs(vx[2]);
-            }
-
-            if (label5.Top < 0)
-            {
-                vy[2] = Math.Abs(vy[2]);
-            }
-            else if (label5.Bottom > ClientSize.Height)
-            {
-                vy[2] = -Math.Abs(vy[2]);
-            }
-
-
-            // (label1.Left < fpos.X) && (fpos.X < label1.Right)
-            if ((fpos.X > label1.Left)
-                && (fpos.X < label1.Right)
-                && (fpos.Y > label1.Top)
-                && (fpos.Y < label1.Bottom))
-            {
-                timer1.Stop();
-                button1.Visible = true;
-            }
-            if ((fpos.X > label4.Left)
-                && (fpos.X < label4.Right)
-                && (fpos.Y > label4.Top)
-                && (fpos.Y < label4.Bottom))
-            {
-                timer1.Stop();
-                button1.Visible = true;
-            }
-            if ((fpos.X > label5.Left)
-                && (fpos.X < label5.Right)
-                && (fpos.Y > label5.Top)
-                && (fpos.Y < label5.Bottom))
-            {
-                timer1.Stop();
-                button1.Visible = true;
-            }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -136,20 +84,14 @@ namespace cs0530
             counter = 0;
             button1.Visible = false;
 
-            vx[0] = random.Next(-10, 11);
-            vy[0] = random.Next(-10, 11);
+            for (int i = 0; i < LabelCount; i++)
+            {
+                vx[i] = random.Next(-10, 11);
+                vy[i] = random.Next(-10, 11);
 
-            vx[1] = random.Next(-10, 11);
-            vy[1] = random.Next(-10, 11);
-            vx[2] = random.Next(-10, 11);
-            vy[2] = random.Next(-10, 11);
-
-            label1.Left = random.Next(ClientSize.Width - label1.Width);
-            label1.Top = random.Next(ClientSize.Height - label1.Height);
-            label4.Left = random.Next(ClientSize.Width - label4.Width);
-            label4.Top = random.Next(ClientSize.Height - label4.Height);
-            label5.Left = random.Next(ClientSize.Width - label5.Width);
-            label5.Top = random.Next(ClientSize.Height - label5.Height);
+                labels[i].Left = random.Next(ClientSize.Width - labels[i].Width);
+                labels[i].Top = random.Next(ClientSize.Height - labels[i].Height);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -157,6 +99,23 @@ namespace cs0530
             for (int i = 0; i < 10; i++)
             {
                 MessageBox.Show($"{i}");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int i;
+            for (i = 0; i < 10; i++)
+            {
+                if (i == 2)
+                {
+                    continue;
+                }
+                if (i == 5)
+                {
+                    break;
+                }
+                MessageBox.Show(i.ToString());
             }
         }
     }
